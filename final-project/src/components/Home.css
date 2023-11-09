@@ -1,0 +1,202 @@
+.HomeImg {
+    max-width: 100%; /* Allow the image to scale with the container width */
+    max-height: 100%; /* Ensure the image does not exceed the container's height */
+    display: block; /* Remove any residual inline alignment */
+    height: 800px; /* Specify the desired height */
+    width: 100%; /* Cover the screen's full width */
+}
+
+.ImgContainter {
+    position: relative;
+}
+.textOverlay {
+    position: absolute;
+    top: 50%; /* Adjust this value to position the text vertically */
+    left: 10%; /* Adjust this value to position the text horizontally */
+    transform: translate(-50%, -50%); /* Center the text using transform */
+    color: #fff; /* Text color on the overlay */
+    padding: 10px;
+    z-index: 1; /* Place the text overlay above the image (you can adjust the z-index value as needed) */
+    font-size: large;
+}
+
+.horizontal-line {
+    width: 100%; /* Make the line span the full width of the page */
+    height: 20px; /* Set the thickness of the line */
+    background-color: #FF8515; /* Set the color of the line */
+  }
+
+.vertical-line {
+    width: 10px;
+    height: 200px;
+    background-color: #9EBD6E;
+    margin-left: 25%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.vertLines {
+    display: flex;
+}
+
+.iconRow {
+    display: flex;
+    position: absolute;
+    top: 1175px;
+    width: 100%;
+}
+
+.icon {
+    width: 100px;
+    height: 100px;
+    margin-right: 19%;
+    margin-left: 5px;
+}
+
+
+.shwowcase {
+    position: relative;
+}
+
+.iconWords {
+    display: flex;
+    position: absolute;
+    top: 1200px;
+    width: 100%;
+}
+
+.showWords {
+    font-family: 'Kaushan Script', sans-serif;
+    text-align: center;
+    padding-left: 100px;
+    margin-left: 10%;
+    
+}
+
+.produce {
+    width: 200px;
+    height: 200px;
+}
+
+.section {
+    font-family: 'Kaushan Script', sans-serif;
+    color: #FF8515;
+    font-size: 48px;
+    margin: 25px;
+}
+
+.card {
+    border: 2px solid #9EBD6E;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 4px 8px black;
+    width: 15%;
+    height: 350px;
+    margin-left: 5%;
+    margin-bottom: 100px;
+}
+.cardShowcase {
+    display: flex;
+    align-items: center;
+}
+
+.produceHdr {
+    font-family: 'Kaushan Script', sans-serif;
+    color: grey;
+    font-size: 18px;
+}
+
+.price {
+    font-family: 'Kaushan Script', sans-serif;
+    color: #9EBD6E;
+    font-size: 18px;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+    display: inline;
+}
+
+.cartButton {
+    font-family: 'Kaushan Script', sans-serif;
+    background-color: #9EBD6E;
+    text-align: center;
+    font-size: 18px;
+    color: black;
+    border: none;
+    width: 100%;
+}
+
+.shopButton {
+    font-family: 'Kaushan Script', sans-serif;
+    background-color: #9EBD6E;
+    text-align: center;
+    font-size: 24px;
+    color: black;
+    border: none;
+    width: 40%;
+    margin: 20px;
+}
+
+.shopContainer {
+    text-align: center;
+}
+
+.pumpkinContainer {
+    text-align: center;
+    position: relative;
+    margin: 50px;
+}
+
+.pumpkinImg {
+    width: 90%;
+    height: 600px;
+}
+
+.pumpkinCard {
+    width: 25%;
+    height: 50%;
+    background-color: #F9EED3;
+    border-color: #FF8515;
+    border-radius: 5px;
+    border: 5px solid #FF8515;
+    position: absolute;
+    top: 100px;
+    right: 150px;
+}
+
+.pumpkinHdr {
+    font-family: 'Kaushan Script', sans-serif;
+    color: #FF8515;
+    font-size: 32px;
+}
+
+.pumpkinDesc {
+    font-family: 'Kaushan Script', sans-serif;
+    color: black;
+    font-size: 20px;
+}
+
+.pumpkinButton {
+    font-family: 'Kaushan Script', sans-serif;
+    background-color: #FF8515;
+    text-align: center;
+    font-size: 18px;
+    color: black;
+    border: none;
+    width: 60%;
+    margin: 20px;
+}
+
+.onSale {
+    background-color:#9EBD6E;
+    height: 25px;
+    width: 100px;
+    position: absolute;
+    font-family: 'Kaushan Script', sans-serif;
+    text-align: center;
+}
+
+.onSale p {
+    margin: 0;
+}
