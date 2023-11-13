@@ -11,13 +11,15 @@
 }
 .textOverlay {
     position: absolute;
-    top: 50%; /* Adjust this value to position the text vertically */
-    left: 10%; /* Adjust this value to position the text horizontally */
+    top: 60%; /* Adjust this value to position the text vertically */
+    left: 20%; /* Adjust this value to position the text horizontally */
     transform: translate(-50%, -50%); /* Center the text using transform */
     color: #fff; /* Text color on the overlay */
     padding: 10px;
     z-index: 1; /* Place the text overlay above the image (you can adjust the z-index value as needed) */
-    font-size: large;
+    font-size: 48px;
+    font-family: 'Kaushan Script', sans-serif;
+    outline: black;
 }
 
 .horizontal-line {
@@ -74,8 +76,8 @@
 }
 
 .produce {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
 }
 
 .section {
@@ -90,10 +92,11 @@
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0 4px 8px black;
-    width: 15%;
-    height: 350px;
+    width: 250px;
+    height: 400px;
     margin-left: 5%;
     margin-bottom: 100px;
+
 }
 .cardShowcase {
     display: flex;
@@ -200,3 +203,4 @@
 .onSale p {
     margin: 0;
 }
+
