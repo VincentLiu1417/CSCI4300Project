@@ -10,7 +10,8 @@ import sirloin from '../images/Sirloin.png';
 import eggs from "../images/eggs.jpg";
 import carrot from "../images/carrot.png";
 import pumpkinPatch from "../images/PumpkinPatch.jpg";
-import { Item, ItemList } from './ItemList';
+import { Item1, ItemList } from './ItemList';
+import { Item2, PopularItems } from './PopularItems';
 
 function Home({arr}) {
 
@@ -37,13 +38,33 @@ function Home({arr}) {
     },
   ];
 
-  
+  const PopularArray = [
+    {
+      name:"Tomatoes  - 1lbs",
+      img: "https://th.bing.com/th/id/R.26de82393ff2fc56f825f15034d5b27d?rik=C5lyvZVNFnnRvQ&pid=ImgRaw&r=0",
+      price:"$2.99"
+    },
+    {
+      name:"Yellow Corn  - 1ct",
+      img:"https://purepng.com/public/uploads/large/purepng.com-cornlarge-grain-plantcorndent-cornflint-cornpod-cornpopcornflour-cornsweet-corn-1701527250524lnhes.png",
+      price:"$1.00"
+    },
+    {
+      name:"Whole Chicken",
+      img:'https://www.seekpng.com/png/full/244-2445920_broiler-chicken-png.png',
+      price:"$12.99"
+    },
+    {
+      name:"Oranges - 1 lb",
+      img:"https://th.bing.com/th/id/R.3f729df06a50706123e89c7b34126d59?rik=IaByHOxT1hEsBQ&pid=ImgRaw&r=0",
+      price:"$7.99"
+    },
+  ];
+
 
   return (
   <div>
     <link href='https://fonts.googleapis.com/css?family=Kaushan Script' rel='stylesheet'></link>
-    <h1>Home</h1>
-    <p>Welcome to the home page.</p>
 
     <div class='ImgContainer'>
         <img src={produceImg} alt="Fresh produce" class="HomeImg"/>
@@ -97,34 +118,7 @@ function Home({arr}) {
     <h1 class='section'>Popular Items</h1> 
 
     <div class='cardShowcase'>
-      <div class='card'>
-        <div class='onSale'><p>Popular</p></div>
-        <img src={eggs} alt="eggs" class="produce"/>
-        <h2 class='produceHdr'>One Dozen Brown Eggs - 12ct</h2>
-        <p class='price'><div class='strikethrough'>$5.99</div> $2.99</p>
-        <button class="cartButton">Add to cart</button>
-      </div>
-      <div class='card'>
-        <div class='onSale'><p>Popular</p></div>
-        <img src={orange} alt="oranges" class="produce"/>
-        <h2 class='produceHdr'>Oranges - 1lb</h2>
-        <p class='price'><div class='strikethrough'>$3.99</div> $0.99</p>
-        <button class="cartButton">Add to cart</button>
-      </div>
-      <div class='card'>
-        <div class='onSale'><p>Popular</p></div>
-        <img src={carrot} alt="carrots" class="produce"/>  
-        <h2 class='produceHdr'>Orange Carrots - 1lb</h2>
-        <p class='price'><div class='strikethrough'>$2.99</div> $1.99</p>
-        <button class="cartButton">Add to cart</button>
-      </div>
-      <div class='card'>
-        <div class='onSale'><p>Popular</p></div>
-        <img src={sirloin} alt="sirloin meat" class="produce"/>
-        <h2 class='produceHdr'>CSirloin cut - 1lb</h2>
-        <p class='price'><div class='strikethrough'>$10.99</div> $8.99</p>
-        <button class="cartButton">Add to cart</button>
-      </div>
+      <PopularItems items={PopularArray} />
     </div>
 
     <div class='shopContainer'>
