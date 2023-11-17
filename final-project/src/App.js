@@ -22,17 +22,7 @@ function App() {
       <Router> 
         <div> 
         <Header />
-            <ul className="App-header"> 
-            <li> 
-                <Link to="/">Home</Link> 
-            </li> 
-            <li> 
-                <Link to="/Listing">Listing</Link> 
-            </li> 
-            <li> 
-                <Link to="/ShoppingCart">Shopping Cart</Link> 
-            </li> 
-            </ul> 
+            
         <Routes> 
                 <Route exact path='/' element={< Home list={DummyArray}/>}></Route> 
                 <Route path="/" element={<Home />}></Route>

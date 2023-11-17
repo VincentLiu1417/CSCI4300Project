@@ -44,14 +44,14 @@
 .iconRow {
     display: flex;
     position: absolute;
-    top: 1175px;
+    top: 950px;
     width: 100%;
 }
 
 .icon {
     width: 100px;
     height: 100px;
-    margin-right: 19%;
+    margin-right: 20%;
     margin-left: 5px;
 }
 
@@ -63,15 +63,16 @@
 .iconWords {
     display: flex;
     position: absolute;
-    top: 1200px;
+    top: 950px;
     width: 100%;
 }
 
 .showWords {
     font-family: 'Kaushan Script', sans-serif;
     text-align: center;
-    padding-left: 100px;
     margin-left: 10%;
+    width: 100%;
+    font-size: 32px;
     
 }
 
