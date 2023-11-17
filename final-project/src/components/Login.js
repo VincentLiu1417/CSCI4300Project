@@ -1,22 +1,16 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import './Login.css';
 
-const LoginButton = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const navigate = useNavigate();
+const LoginButton = ({ onLogin }) => {
 
   const handleClick = () => {
-    setLoggedIn(!loggedIn);
-    if (loggedIn) {
-      navigate('/');
-    }
+    onLogin();
   };
 
   return (
     <button className="login" onClick={handleClick}>
-      {loggedIn ? 'Log Out' : 'Log In/Sign Up'}
+      Log In/Sign Up
     </button>
   );
 };

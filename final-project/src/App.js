@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom'; 
+import { useState } from 'react';
 
 const DummyArray = [
   {
@@ -17,24 +18,29 @@ const DummyArray = [
 ];
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    setLoggedIn(true);
+  };
+  
+  const handleLogout = () => {
+    setLoggedIn(false);
+  }
   return (
-    <div className="App">
-      <Router> 
-        <div> 
-        <Header />
-            
-        <Routes> 
-                <Route exact path='/' element={< Home list={DummyArray}/>}></Route> 
-                <Route path="/" element={<Home />}></Route>
-                <Route path='/Listing' element={< Listing />}></Route> 
-                <Route path='/Login' element={< Login />}></Route> 
-                <Route path='/ShoppingCart' element={< ShoppingCart />}></Route> 
-        </Routes> 
-        </div> 
-      </Router> 
-      <Footer />
-    </div>
-  );
+    <Router>
+      <div className="App">
+        <Header loggedIn={loggedIn} onLogin={handleLogin} onLogout={handleLogout} />
+        <Routes>
+          <Route exact path='/' element={<Home list={DummyArray} />} />
+          <Route path='/Listing' element={<Listing />} />
+          <Route path='/Login' element={<Login onLogin={handleLogin} />} />
+          <Route path='/ShoppingCart' element={<ShoppingCart />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
+);
 }
 
 export default App;
