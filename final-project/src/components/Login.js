@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Home = () => (
-  <div>
-    <h1>Login</h1>
-    <p>Login Here</p>
-  </div>
-);
+import './Login.css';
 
-export default Home;
+const LoginButton = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    setLoggedIn(!loggedIn);
+    if (loggedIn) {
+      navigate('/');
+    }
+  };
+
+  return (
+    <button className="login" onClick={handleClick}>
+      {loggedIn ? 'Sign Out' : 'Log In/Sign Up'}
+    </button>
+  );
+};
+
+export default LoginButton;

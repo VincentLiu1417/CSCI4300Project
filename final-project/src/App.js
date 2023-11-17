@@ -8,7 +8,6 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom'; 
 
-
 const DummyArray = [
   {
     name:"Orange Carrots  - 1lbs",
@@ -17,13 +16,12 @@ const DummyArray = [
   }
 ];
 
-
 function App() {
   return (
     <div className="App">
-      <Header />
       <Router> 
         <div> 
+        <Header />
             <ul className="App-header"> 
             <li> 
                 <Link to="/">Home</Link> 
@@ -32,14 +30,12 @@ function App() {
                 <Link to="/Listing">Listing</Link> 
             </li> 
             <li> 
-                <Link to="/Login">Login</Link> 
-            </li> 
-            <li> 
                 <Link to="/ShoppingCart">Shopping Cart</Link> 
             </li> 
             </ul> 
         <Routes> 
                 <Route exact path='/' element={< Home list={DummyArray}/>}></Route> 
+                <Route path="/" element={<Home />}></Route>
                 <Route path='/Listing' element={< Listing />}></Route> 
                 <Route path='/Login' element={< Login />}></Route> 
                 <Route path='/ShoppingCart' element={< ShoppingCart />}></Route> 
@@ -52,3 +48,4 @@ function App() {
 }
 
 export default App;
+

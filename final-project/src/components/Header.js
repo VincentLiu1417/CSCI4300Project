@@ -1,5 +1,6 @@
 import React from 'react';
 import './Header.css'; // You can create a CSS file for styling
+import LoginButton from './Login';
 
 function Header() {
   return (
@@ -13,6 +14,9 @@ function Header() {
           <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/contact">Contact</a></li>
+          <li class='login'>
+            <LoginButton />
+          </li>
         </ul>
       </nav>
     </header>

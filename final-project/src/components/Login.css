@@ -1,0 +1,11 @@
+.login {
+    background-color: #9EBD6E;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Kaushan Script', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
