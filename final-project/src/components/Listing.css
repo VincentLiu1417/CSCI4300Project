@@ -1,0 +1,41 @@
+.add-listing-form {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+  }
+  
+  button {
+    background-color: #9EBD6E;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .top-image {
+    width: 100%;
+    height: 700px; 
+  }
+  
+.section {
+    text-align: center;
+  }
+
+body {
+    font-family: 'Kaushan Script', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, p, label, button, input, select {
+    font-family: 'Kaushan Script', sans-serif;
+  }
+  
+  
