@@ -83,6 +83,7 @@
     position: relative;
     left: 58%;
     bottom: 75%;
+    width: 5%;
 }
 
 .quantitytotal {
@@ -91,7 +92,7 @@
     width: 300px;
     position: relative;
     left: 70%;
-    bottom: 130%;
+    bottom: 140%;
     font-family: 'Kaushan Script', sans-serif;
     text-align: center;
 }
@@ -139,7 +140,6 @@
     color: black;
     border: none;
     width: 80%;
-    margin: 15px;
 }
 
 .checkoutprice {

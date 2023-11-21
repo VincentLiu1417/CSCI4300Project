@@ -8,7 +8,7 @@ import thumbIcon from "../images/thumbIcon.png";
 import truckIcon from "../images/truckIcon.png";
 import { Cart1, CartList } from './CartList';
 
-function Home({arr}) {
+function Cart({arr}) {
 
   const DummyArray = [
     {
@@ -70,4 +70,4 @@ function Home({arr}) {
     </div>
   );
 }
-export default Home;
+export default Cart;

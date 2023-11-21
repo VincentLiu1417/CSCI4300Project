@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Listing.css';
-import FreshProduceImage from '../images/Produce.jpg';
+import FreshProduceImage from '../images/FreshProduce.jpg';
 
 function Listing() {
   const [newListing, setNewListing] = useState({
