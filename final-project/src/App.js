@@ -6,6 +6,7 @@ import ShoppingCart from './components/ShoppingCart';
 import Login from './components/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ErrorPage from './components/ErrorPage';
 import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom'; 
 import { useState } from 'react';
 
@@ -36,6 +37,7 @@ function App() {
           <Route path='/Listing' element={<Listing />} />
           <Route path='/Login' element={<Login onLogin={handleLogin} />} />
           <Route path='/ShoppingCart' element={<ShoppingCart />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />
       </div>
