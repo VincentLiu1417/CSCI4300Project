@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Home.css';
 import produceImg from "../images/FreshProduce.jpg";
 import farmerIcon from "../images/farmerIcon.png";
@@ -12,6 +12,7 @@ import carrot from "../images/carrot.png";
 import pumpkinPatch from "../images/PumpkinPatch.jpg";
 import { Item1, ItemList } from './ItemList';
 import { Item2, PopularItems } from './PopularItems';
+import axios from "axios";
 
 function Home({arr}) {
 
@@ -61,9 +62,26 @@ function Home({arr}) {
     },
   ];
 
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/items');
+        setItems(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
 
   return (
+    
   <div>
+
     <link href='https://fonts.googleapis.com/css?family=Kaushan Script' rel='stylesheet'></link>
 
     <div class='ImgContainer'>
@@ -99,7 +117,7 @@ function Home({arr}) {
 
 
     <div class='cardShowcase'>
-      <ItemList items={DummyArray} />
+      <ItemList items={items} />
     </div>
 
     <div class='shopContainer'>
