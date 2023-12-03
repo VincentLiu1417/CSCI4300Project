@@ -24,13 +24,7 @@ function Header( { loggedIn, onLogin, onLogout }) {
           <li><Link to="/">Home</Link></li>
           <li><Link to="/Listing">Listing</Link></li>
           <li><Link to="/ShoppingCart">Shopping cart</Link></li>
-          <li className='login'>
-            {loggedIn ? (
-              <button onClick={handleSignOut} className="signout">Sign Out</button>
-            ) : (
-              <LoginButton onLogin={onLogin} />
-            )}
-          </li>
+          <li><Link to="/Login">Log in/Sign up</Link></li>
         </ul>
       </nav>
     </header>

@@ -7,8 +7,11 @@ import Login from './components/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ErrorPage from './components/ErrorPage';
+import Signup from './components/Signup';
 import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom'; 
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
+import UserContext from './context/UserContext';
 
 const DummyArray = [
   {
@@ -21,6 +24,37 @@ const DummyArray = [
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
+  const [userData, setUserData] = useState({
+    token: undefined,
+    user: undefined,
+  });
+
+  useEffect(() => {
+    const checkLoggedIn = async () => {
+      let token = localStorage.getItem("auth-token");
+      if (token === null) {
+        localStorage.setItem("auth-token", "");
+        token = "";
+      }
+      const tokenResponse = await axios.post(
+        "http://localhost:8082/api/users/tokenIsValid",
+        null,
+        { headers: { "x-auth-token": token } }
+      );
+      if (tokenResponse.data) {
+        const userRes = await axios.get("http://localhost:8082/", {
+          headers: { "x-auth-token": token },
+        });
+        setUserData({
+          token,
+          user: userRes.data,
+        });
+      }
+    };
+
+    checkLoggedIn();
+  }, []);
+
   const handleLogin = () => {
     setLoggedIn(true);
   };
@@ -29,6 +63,7 @@ function App() {
     setLoggedIn(false);
   }
   return (
+    <UserContext.Provider value={{ userData, setUserData }}>
     <Router>
       <div className="App">
         <Header loggedIn={loggedIn} onLogin={handleLogin} onLogout={handleLogout} />
@@ -36,12 +71,14 @@ function App() {
           <Route exact path='/' element={<Home list={DummyArray} />} />
           <Route path='/Listing' element={<Listing />} />
           <Route path='/Login' element={<Login onLogin={handleLogin} />} />
+          <Route path='/Signup' element={<Signup />} />
           <Route path='/ShoppingCart' element={<ShoppingCart />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />
       </div>
     </Router>
+    </UserContext.Provider>
 );
 }
 
