@@ -1,46 +1,50 @@
 import React, { useState } from 'react';
 import './Listing.css';
 import FreshProduceImage from '../images/FreshProduce.jpg';
+import { useCart } from './CartContext';
 
 function Listing() {
   const [newListing, setNewListing] = useState({
-    name: '',
-    email: '',
-    farmName: '',
     product: '',
-    dietarySpecialties: [],
+    price: '',
+    quantity: '',
     imageLink: '',
   });
 
   const [listings, setListings] = useState([]);
-
-  const handleCheckboxChange = (specialty) => {
-    setNewListing({
-      ...newListing,
-      dietarySpecialties: newListing.dietarySpecialties.includes(specialty)
-        ? newListing.dietarySpecialties.filter((item) => item !== specialty)
-        : [...newListing.dietarySpecialties, specialty],
-    });
-  };
+  const [selectedListing, setSelectedListing] = useState(null);
+  const { addItemToCart } = useCart();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const requiredFields = ['name', 'email', 'farmName', 'product'];
+    const requiredFields = ['product', 'price', 'quantity', 'imageLink'];
     if (requiredFields.some((field) => newListing[field] === '')) {
       alert('Please fill in all required fields.');
+      return;
+    }
+
+    if (isNaN(newListing.price) || newListing.price < 0) {
+      alert('Please enter a valid price.');
       return;
     }
 
     setListings([...listings, newListing]);
 
     setNewListing({
-      name: '',
-      email: '',
-      farmName: '',
       product: '',
-      dietarySpecialties: [],
+      price: '',
+      quantity: '',
       imageLink: '',
+    });
+  };
+
+  const handleAddToCart = (listing) => {
+    addItemToCart({
+      name: listing.product,
+      img: listing.imageLink,
+      price: listing.price,
+      quantity: parseInt(listing.quantity, 10),
     });
   };
 
@@ -54,33 +58,6 @@ function Listing() {
         <h2>Add a New Listing</h2>
         <form onSubmit={handleSubmit}>
           <label>
-            Name:
-            <input
-              type="text"
-              name="name"
-              value={newListing.name}
-              onChange={(e) => setNewListing({ ...newListing, name: e.target.value })}
-            />
-          </label>
-          <label>
-            Email:
-            <input
-              type="text"
-              name="email"
-              value={newListing.email}
-              onChange={(e) => setNewListing({ ...newListing, email: e.target.value })}
-            />
-          </label>
-          <label>
-            Farm Name:
-            <input
-              type="text"
-              name="farmName"
-              value={newListing.farmName}
-              onChange={(e) => setNewListing({ ...newListing, farmName: e.target.value })}
-            />
-          </label>
-          <label>
             Product:
             <input
               type="text"
@@ -89,58 +66,24 @@ function Listing() {
               onChange={(e) => setNewListing({ ...newListing, product: e.target.value })}
             />
           </label>
-
           <label>
-            Dietary Specialties:
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  name="Vegan"
-                  checked={newListing.dietarySpecialties.includes('Vegan')}
-                  onChange={() => handleCheckboxChange('Vegan')}
-                />
-                Vegan
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="Organic"
-                  checked={newListing.dietarySpecialties.includes('Organic')}
-                  onChange={() => handleCheckboxChange('Organic')}
-                />
-                Organic
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="GlutenFree"
-                  checked={newListing.dietarySpecialties.includes('GlutenFree')}
-                  onChange={() => handleCheckboxChange('GlutenFree')}
-                />
-                Gluten Free
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="Keto"
-                  checked={newListing.dietarySpecialties.includes('Keto')}
-                  onChange={() => handleCheckboxChange('Keto')}
-                />
-                Keto
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="Paleo"
-                  checked={newListing.dietarySpecialties.includes('Paleo')}
-                  onChange={() => handleCheckboxChange('Paleo')}
-                />
-                Paleo
-              </label>
-            </div>
+            Price ($):
+            <input
+              type="number"
+              name="price"
+              value={newListing.price}
+              onChange={(e) => setNewListing({ ...newListing, price: e.target.value })}
+            />
           </label>
-
+          <label>
+            Quantity:
+            <input
+              type="number"
+              name="quantity"
+              value={newListing.quantity}
+              onChange={(e) => setNewListing({ ...newListing, quantity: e.target.value })}
+            />
+          </label>
           <label>
             Image Link:
             <input
@@ -150,7 +93,6 @@ function Listing() {
               onChange={(e) => setNewListing({ ...newListing, imageLink: e.target.value })}
             />
           </label>
-
           <button type="submit">Add Listing</button>
         </form>
       </div>
@@ -161,18 +103,11 @@ function Listing() {
           {listings.map((listing, index) => (
             <li key={index}>
               <div>
-                <h4>{listing.name}</h4>
-                <p>Email: {listing.email}</p>
-                <p>Farm Name: {listing.farmName}</p>
-                <p>Product: {listing.product}</p>
-                <p>Dietary Specialties: {listing.dietarySpecialties.join(', ')}</p>
-
-                {listing.imageLink && (
-                  <div>
-                    <h5>Listing Image:</h5>
-                    <img src={listing.imageLink} alt={`Listing ${index + 1}`} className="listing-image" />
-                  </div>
-                )}
+                <h4>{listing.product}</h4>
+                <p>Price: ${listing.price}</p>
+                <p>Quantity: {listing.quantity}</p>
+                <img src={listing.imageLink} alt={listing.product} style={{ maxWidth: '200px', maxHeight: '200px' }} />
+                <button onClick={() => handleAddToCart(listing)}>Add to Cart</button>
               </div>
             </li>
           ))}
