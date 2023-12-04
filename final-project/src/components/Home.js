@@ -13,6 +13,7 @@ import pumpkinPatch from "../images/PumpkinPatch.jpg";
 import { Item1, ItemList } from './ItemList';
 import { Item2, PopularItems } from './PopularItems';
 import axios from "axios";
+import { useCart } from './CartContext.js';
 
 function Home({arr}) {
 
@@ -20,22 +21,26 @@ function Home({arr}) {
     {
       name:"Orange Carrots  - 1lbs",
       img: "https://pngimg.com/uploads/carrot/carrot_PNG4985.png",
-      price:"$2.99"
+      price:"2.99",
+      quantity:0,
     },
     {
       name:"One Dozen Brown Eggs  - 12ct",
       img:"https://th.bing.com/th/id/R.2afed416987f2f8f4807362a2f6c64c8?rik=WVA0x30udG%2fIaA&pid=ImgRaw&r=0",
-      price:"$5.99"
+      price:"5.99",
+      quantity:0,
     },
     {
       name:"Sirloin Cut - 1lb",
       img:'https://th.bing.com/th/id/OIP.9hJSAsh0ucz01swtcwTXhAHaDc?pid=ImgDet&rs=1',
-      price:"$10.99"
+      price:"10.99",
+      quantity:0,
     },
     {
       name:"Oranges - 1 lb",
       img:"https://th.bing.com/th/id/R.3f729df06a50706123e89c7b34126d59?rik=IaByHOxT1hEsBQ&pid=ImgRaw&r=0",
-      price:"$7.99"
+      price:"7.99",
+      quantity:0,
     },
   ];
 
@@ -78,6 +83,18 @@ function Home({arr}) {
   }, []);
 
 
+  //const { addItemToCart } = useCart();
+
+  const handleAddToCart = (item) => {
+    addItemToCart(item);
+    // You can add additional logic here if needed
+  };
+
+  const { cartItems, addItemToCart } = useCart();
+
+
+  console.log('Items in ParentComponent:', cartItems);
+
   return (
     
   <div>
@@ -117,7 +134,7 @@ function Home({arr}) {
 
 
     <div class='cardShowcase'>
-      <ItemList items={items} />
+      <ItemList items={DummyArray} onAddToCart={handleAddToCart}/>
     </div>
 
     <div class='shopContainer'>

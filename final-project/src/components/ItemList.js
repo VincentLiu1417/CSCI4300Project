@@ -10,20 +10,20 @@ const Item = ({ name, price, image }) => (
 );
 
 
-const Item1 = ({ name, price, img }) => (
+const Item1 = ({ name, price, img, onAddToCart}) => (
     <div class='card'>
         <div class='onSale'><p>On Sale</p></div>
         <img src={img} alt={name} class="produce"/>
         <h2 class='produceHdr'>{name}</h2>
         <p class='price'>{price}</p>
-        <button class="cartButton">Add to cart</button>
+        <button class="cartButton" onClick={() => onAddToCart({ name, price, img })}>Add to cart</button>
       </div>
   );
 
-const ItemList = ({ items }) => (
+const ItemList = ({ items, onAddToCart }) => (
   <div class='listDisplay'>
     {items.slice(0, 4).map((item, index) => (
-      <Item1 key={index} {...item} />
+      <Item1 key={index} {...item} onAddToCart={onAddToCart} />
     ))}
   </div>
 );

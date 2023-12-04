@@ -12,6 +12,7 @@ import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import UserContext from './context/UserContext';
+import { CartProvider } from './components/CartContext';
 
 const DummyArray = [
   {
@@ -63,6 +64,7 @@ function App() {
     setLoggedIn(false);
   }
   return (
+    <CartProvider>
     <UserContext.Provider value={{ userData, setUserData }}>
     <Router>
       <div className="App">
@@ -79,6 +81,7 @@ function App() {
       </div>
     </Router>
     </UserContext.Provider>
+    </CartProvider>
 );
 }
 

@@ -8,9 +8,11 @@ import barnIcon from "../images/barnIcon.png";
 import thumbIcon from "../images/thumbIcon.png";
 import truckIcon from "../images/truckIcon.png";
 import { Cart1, CartList } from './CartList';
+import { useCart } from './CartContext.js';
 
 function Cart({arr}) {
 
+  /*
   const [cartItems, setCartItems] = useState([
     {
       name:"Orange Carrots  - 1lbs",
@@ -37,6 +39,9 @@ function Cart({arr}) {
       quantity:0,
     },
   ]);  
+  */
+
+  const { cartItems, addItemToCart } = useCart();
 
   const handleQuantityChange = (itemName, newQuantity) => {
     const updatedItems = cartItems.map(item => {
@@ -45,7 +50,7 @@ function Cart({arr}) {
       }
       return item;
     });
-    setCartItems(updatedItems);
+    addItemToCart(updatedItems);
   };
 
   const calculateTotalPrice = () => {
